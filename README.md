@@ -38,5 +38,5 @@ Then you can program your game in your source file. For a guide on how to use Te
 To compile your game, you will also need to compile other source files in the Termily library (_this will change the feature_). Before compiling, make sure that you are in the main directory of your project. For this example, I will use the GCC compiler, but you can also use other compilers.
 
 ```
-gcc Termily/Graphic/graphic.c Termily/Actor/actor.c Termily/Key/key.c main.c -o main
+gcc Termily/Graphic/graphic.c Termily/Actor/actor.c Termily/Key/key.c (your main c file) -o (your exe name)
 ```
