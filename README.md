@@ -31,7 +31,7 @@ Folder
 ├───main.c  
 └───termily.h  
 
-Then you can program your game in your source file. For a guide on how to use Termily, please visit our wiki page (_Wiki page is being work on_).
+Then you can program your game in your source file. For a guide on how to use Termily, please visit our [Wiki page](https://github.com/Nongtajkrub/Termily/wiki) (_Wiki page is being work on_).
 
 ## Compiling your game
 
