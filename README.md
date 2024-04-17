@@ -2,13 +2,13 @@
 
 **This project is currently still in the testing phase. Right now, it is just a showcase of what Termily can do. I do not recommend using it in a reading project.**
 
-Hello! This is my own C library designed for making games run on the terminal. The current version is 0.01. The latest release was on April 15, 2024. Termily is not cross-platform and can only be used on Windows. There are numerous planned features for the future, including performance updates.
+Hello! This is my own C library designed for making games run on the terminal. The current version is 0.02. The latest release was on April 17, 2024. Termily is not cross-platform and can only be used on Windows. There are numerous planned features for the future, including performance updates.
 
 You can contact me at my email, sunanborthwic@gmail.com, or on my [instragram](https://www.instagram.com/nongtajkrub/)
 
 ## Set up
 
-First, you need to download the latest version of Termily. You can do this on the [realease page](https://github.com/Nongtajkrub/Termily/releases/tag/v0.01-pre_alpha). Go ahead and download the file called termily.rar. After downloading, make a new folder, put the downloaded file into the folder, and then extract the downloaded file. After extracting the file, your folder structure should now be similar to this. 
+First, you need to download the latest version of Termily. You can do this on the [realease page](https://github.com/Nongtajkrub/Termily/releases/tag/0.02-pre_alpha). Go ahead and download the file called termily.rar. After downloading, make a new folder, put the downloaded file into the folder, and then extract the downloaded file. After extracting the file, your folder structure should now be similar to this. 
 
 Folder  
 │  
