@@ -24,4 +24,4 @@ void
 clearScreen(graph_t *graph);
 
 void
-drawText(graph_t *graph, const char* const TEXT, u32 x, u32 y);
+drawText(graph_t *graph, const char* TEXT, u32 x, u32 y);

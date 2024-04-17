@@ -10,7 +10,7 @@ static inline void
 graphNotMade(const char* FUNC) {
 	char err_mess[ERR_MESS_SIZE];
 
-	sprintf(err_mess, "%s -> graphic struct not made", FUNC);
+	sprintf_s(err_mess, ERR_MESS_SIZE, "%s -> graphic struct not made", FUNC);
 	perror(err_mess);
 	graph_err = GRAPH_NOT_MADE;
 }

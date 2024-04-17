@@ -3,8 +3,8 @@
 #include <stdbool.h>
 #include "../Utill/type.h"
 
-#define MAX_W 1980
-#define MAX_H 1080
+#define MAX_W 480
+#define MAX_H 270
 
 extern u16 graph_err;
 

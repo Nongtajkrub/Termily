@@ -4,4 +4,5 @@
 #define KEY_NOT_MADE 1
 
 // Function name
+#define CHECK_KEY_DOWN_FUNC "CKD"
 #define CHECK_KEY_PRESS_FUNC "CKP"

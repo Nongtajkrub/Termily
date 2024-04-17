@@ -8,7 +8,8 @@ extern u16 key_err;
 
 typedef struct Key {
 	u32 key;
-	bool press;
+	bool press,
+		 made;
 } key_t;
 
 extern key_t key_up;

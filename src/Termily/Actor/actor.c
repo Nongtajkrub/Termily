@@ -16,7 +16,7 @@ makeActor(actor_t *actor, graph_t *graph, char charac) {
 void
 setPos(actor_t *actor, i32 x, i32 y) {
 	if (!actor->made) {
-		actorNotMade();
+		actorNotMade(SET_POS_FUNC);
 		return;
 	}
 	actor->x = x;
@@ -26,7 +26,7 @@ setPos(actor_t *actor, i32 x, i32 y) {
 void
 drawActor(actor_t *actor) {
 	if (!actor->made) {
-		actorNotMade();
+		actorNotMade(DRAW_ACTOR_FUNC);
 		return;
 	}
 	if (
@@ -43,7 +43,7 @@ drawActor(actor_t *actor) {
 bool
 checkCollide(actor_t *actor1, actor_t *actor2) {
 	if (!actor1->made || !actor2->made) {
-		actorNotMade();
+		actorNotMade(CHECK_COLLIDE_FUNC);
 		return false;
 	}
 	if (actor1->x == actor2->x && actor1->y == actor2->y) {
