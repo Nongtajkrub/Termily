@@ -1,7 +1,7 @@
 #include "key.h"
 #include "key_err.h"
 #include "key_macro.h"
-#include "../Share/macro.h"
+#include "../Utill/macro.h"
 #include <windows.h>
 
 u16 key_err = SUCCESS;
