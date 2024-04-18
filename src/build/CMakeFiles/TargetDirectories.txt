@@ -1,3 +1,0 @@
-C:/Users/tytgsjsn/Desktop/Visual Studio/C Project/Termily/build/CMakeFiles/Termily.dir
-C:/Users/tytgsjsn/Desktop/Visual Studio/C Project/Termily/build/CMakeFiles/edit_cache.dir
-C:/Users/tytgsjsn/Desktop/Visual Studio/C Project/Termily/build/CMakeFiles/rebuild_cache.dir
