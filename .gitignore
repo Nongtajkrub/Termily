@@ -1,9 +1,6 @@
-# Ignore CMake build files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-/build/
-/bin/
-/Debug/
-/Release/
+# Ignore compiled object files and executables
+*.o
+*.out
+*.exe
+*.dll
+*.gpp
