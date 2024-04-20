@@ -1,6 +1,6 @@
 # Termily
 
-<u>**WIKI CURRENTLY OUTDATED**</u>
+<u>**THE GUIDES AND THE EXAMPLE WIKI PAGE ARE OUTDATED.**</u>
 
 **This project is currently still in the testing phase. Right now, it is just a showcase of what Termily can do. I do not recommend using it in a real project.**
 
