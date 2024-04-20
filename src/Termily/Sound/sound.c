@@ -1,7 +1,7 @@
 #include "sound.h"
 #include "sound_err.h"
 #include "../Utill/macro.h"
-#include <stdbool.h>
+#include "../Utill/type.h"
 #include <windows.h>
 
 u16 sound_err = SUCCESS;

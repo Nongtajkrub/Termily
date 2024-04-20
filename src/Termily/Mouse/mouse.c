@@ -1,7 +1,7 @@
 #include "mouse.h"
 #include "mouse_err.h"
 #include "mouse_macro.h"
-#include <stdbool.h>
+#include "../Utill/type.h"
 #include <windows.h>
 
 u16 mouse_err = SUCCESS;

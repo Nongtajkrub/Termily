@@ -2,8 +2,7 @@
 #include "graphic_macro.h"
 #include "graphic_err.h"
 #include "../Utill/macro.h"
-#include <stdio.h>
-#include <stdbool.h>
+#include "../Utill/type.h"
 
 u16 graph_err = SUCCESS;
 
@@ -69,20 +68,4 @@ clearScreen(graph_t *graph) {
 			graph->win[h][w] = SCREEN_BACKGROUND;
 		}
 	}
-}
-
-void 
-drawText(graph_t *graph, const char* TEXT, u32 x, u32 y) {
-	u32 text_ind;	
-
-	if (x > graph->w || y > graph->h) return; 
-	text_ind = 0;
-	for (u32 h = y; h < graph->h; h++) {
-		for (u32 w = x; w < graph->w; w++) {
-			if (graph->win[h][w] == SCREEN_BOARDER) continue;
-			if (TEXT[text_ind] == '\0')	return;;
-			graph->win[h][w] = TEXT[text_ind];
-			text_ind++;
-		}
-	}	
 }

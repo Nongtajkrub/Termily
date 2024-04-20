@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Utill/type.h"
-#include <stdbool.h>
 #include <windows.h>
 
 extern u16 key_err;

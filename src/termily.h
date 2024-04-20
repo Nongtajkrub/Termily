@@ -5,3 +5,4 @@
 #include "Termily/Key/key.h"
 #include "Termily/Mouse/mouse.h"
 #include "Termily/Sound/sound.h"
+#include "Termily/Text/text.h"

@@ -1,6 +1,7 @@
 #include "actor.h"
 #include "actor_err.h"
 #include "../Utill/macro.h"
+#include "../Utill/type.h"
 
 u16 actor_err = SUCCESS;
 

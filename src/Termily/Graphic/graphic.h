@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdbool.h>
 #include "../Utill/type.h"
 
 #define MAX_W 480
@@ -23,5 +22,4 @@ drawGraphic(graph_t *graph);
 void
 clearScreen(graph_t *graph);
 
-void
-drawText(graph_t *graph, const char* const TEXT, u32 x, u32 y);
+

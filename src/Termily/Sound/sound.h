@@ -2,7 +2,6 @@
 
 #include "../Utill/type.h"
 #include <windows.h>
-#include <stdbool.h>
 
 #define SOUND_PATH_SIZE 512
 
