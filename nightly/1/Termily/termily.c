@@ -2,7 +2,7 @@
 #include <process.h>
 
 bool should_run = true;
-HANDLE should_run_thr;
+static HANDLE should_run_thr;
 
 static void
 checkShouldRun() {
