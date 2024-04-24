@@ -19,7 +19,7 @@ mouse_t mouse_right = {
 };
 
 u32
-getMouseX() {
+mouse_getMouseX() {
 	static POINT mouse_pos;
 
 	GetCursorPos(&mouse_pos);
@@ -27,7 +27,7 @@ getMouseX() {
 }
 
 u32
-getMouseY() {
+mouse_getMouseY() {
 	static POINT mouse_pos;
 
 	GetCursorPos(&mouse_pos);
@@ -35,15 +35,15 @@ getMouseY() {
 }
 
 bool 
-checkMouseDown(mouse_t *mouse) {
+mouse_checkMouseDown(mouse_t *mouse) {
 	if (!mouse->made) {
 		mouseNotMade(CHECK_MOUSE_DOWN_FUNC);
 		return false;
 	}
 	if (GetAsyncKeyState(mouse->key) & 0x8000 && !mouse->press) {
 		mouse->press = true;
-		mouse->x = getMouseX();
-		mouse->y = getMouseY();
+		mouse->x = mouse_getMouseX();
+		mouse->y = mouse_getMouseY();
 		return true;
 	}
 	if (!GetAsyncKeyState(mouse->key)) {
@@ -53,15 +53,15 @@ checkMouseDown(mouse_t *mouse) {
 }
 
 bool
-checkMousePress(mouse_t *mouse) {
+mouse_checkMousePress(mouse_t *mouse) {
 	if (!mouse->made) {
 		mouseNotMade(CHECK_MOUSE_PRESS_FUNC);
 		return false;
 	}
 	if (GetAsyncKeyState(mouse->key) & 0x8000) {
 		mouse->press = true;
-		mouse->x = getMouseX();
-		mouse->y = getMouseY();
+		mouse->x = mouse_getMouseX();
+		mouse->y = mouse_getMouseY();
 		return true;
 	}
 	return false;

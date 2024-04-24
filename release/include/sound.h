@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Utill/type.h"
+#include "type.h"
 #include <windows.h>
 
 #define SOUND_PATH_SIZE 512
@@ -13,7 +13,7 @@ typedef struct Sound {
 } sound_t;
 
 void
-makeSound(sound_t *sound, LPCSTR path);
+sound_makeSound(sound_t *sound, LPCSTR path);
 
 void
-playSound(sound_t *sound); 
+sound_playSound(sound_t *sound); 

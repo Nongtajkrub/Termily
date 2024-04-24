@@ -16,21 +16,28 @@ graphNotMade(const char* FUNC) {
 }
 
 static inline void
-exceedMaxH(const char* FUNC, graph_t *graph) {
+exceedMaxH(const char* FUNC) {
 	char err_mess[ERR_MESS_SIZE];
 
 	sprintf_s(err_mess, ERR_MESS_SIZE, "%s -> height exceed limit", FUNC);
 	perror(err_mess);
-	graph->made = false;
 	graph_err = EXCEED_MAX_H;
 }
 
 static inline void
-exceedMaxW(const char* FUNC, graph_t *graph) {
+exceedMaxW(const char* FUNC) {
 	char err_mess[ERR_MESS_SIZE];
 
 	sprintf_s(err_mess, ERR_MESS_SIZE, "%s -> width exceed limit", FUNC);
 	perror(err_mess);
-	graph->made = false;
 	graph_err = EXCEED_MAX_W;
+}
+
+static inline void
+exceedColorSize(const char* FUNC) {
+	char err_mess[ERR_MESS_SIZE];
+
+	sprintf_s(err_mess, ERR_MESS_SIZE, "%s -> color string size exceed", FUNC);
+	perror(err_mess);
+	graph_err = EXCEED_COLOR_SIZE;
 }

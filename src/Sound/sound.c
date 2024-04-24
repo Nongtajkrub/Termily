@@ -7,13 +7,13 @@
 u16 sound_err = SUCCESS;
 
 void
-makeSound(sound_t *sound, LPCSTR path) {
+sound_makeSound(sound_t *sound, LPCSTR path) {
 	sound->path = path;
 	sound->made = true;
 }
 
 void
-playSound(sound_t *sound) {
+sound_playSound(sound_t *sound) {
 	if (!sound->made) {
 		soundNotMade(PLAY_SOUND_FUNC);
 		return;

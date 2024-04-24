@@ -6,7 +6,7 @@
 u16 text_err = SUCCESS;
 
 void
-makeText(
+text_makeText(
 	text_t *text,
 	const char TEXT[TEXT_SIZE],
 	text_prob_t prob,
@@ -26,7 +26,7 @@ makeText(
 }
 
 void
-changeText(text_t *text, const char* NEW_TEXT) {
+text_changeText(text_t *text, const char* NEW_TEXT) {
 	if (!text->made) {
 		textNotMade(CHANGE_TEXT_FUNC);
 		return;
@@ -38,6 +38,7 @@ changeText(text_t *text, const char* NEW_TEXT) {
 	strcpy_s(text->text, TEXT_SIZE, NEW_TEXT);
 }
 
+// Use in two function below
 static inline void
 checkErrSpacing(text_t *text, u8 new_space) {
 	if (!text->made) {
@@ -51,35 +52,19 @@ checkErrSpacing(text_t *text, u8 new_space) {
 }
 
 void
-changeSpacingX(text_t *text, u8 new_space) {
+text_changeSpacingX(text_t *text, u8 new_space) {
 	checkErrSpacing(text, new_space);	
 	text->space_x = new_space;
 }
 
 void
-changeSpacingY(text_t *text, u8 new_space) {
+text_changeSpacingY(text_t *text, u8 new_space) {
 	checkErrSpacing(text, new_space);	
 	text->space_y = new_space;
 }
 
-static inline void
-applyUnderline(text_t *text, u32 h, u32 w) {
-	text->graph->win[h + 1][w] = '-';	
-}
-
-static void
-applyProb(text_t *text, u32 h, u32 w) {
-	switch (text->prob) {
-		case UNDER_LINE:
-			applyUnderline(text, h, w);
-			break;
-		case NONE:
-			break;
-	}
-}
-
 void
-setWrap(text_t *text, bool value) {
+text_setWrap(text_t *text, bool value) {
 	if (!text->made) {
 		textNotMade(SET_WRAP_FUNC);
 		return;
@@ -87,8 +72,26 @@ setWrap(text_t *text, bool value) {
 	text->wrap = value;
 }
 
+// Use in the function below
+static inline void
+applyUnderline(text_t *text, u32 h, u32 w) {
+	text->graph->win[h + 1][w] = '-';	
+}
+
+// Use in the function below
+static void
+applyProb(text_t *text, u32 h, u32 w) {
+	if (text->prob == NONE) return;
+	if (text->prob & UNDER_LINE) applyUnderline(text, h, w);
+	/*
+	if (SPACE_SAME_SPACING) {
+	
+	}
+	*/
+}
+
 void 
-drawText(text_t *text, u32 x, u32 y) {
+text_drawText(text_t *text, u32 x, u32 y) {
 	u32 text_ind;	
 
 	if (!text->made) {
@@ -107,9 +110,15 @@ drawText(text_t *text, u32 x, u32 y) {
 			if (text->text[text_ind] == '\0') return;
 			text->graph->win[h][w] = text->text[text_ind];
 			applyProb(text, h, w);
-			if (text->text[text_ind] != ' ') w += text->space_x;
+			if (
+				text->text[text_ind] != ' ' ||
+				text->prob != SPACE_SAME_SPACING
+				) w += text->space_x;
 			text_ind++;
 		}
-		if (text->text[text_ind] != ' ') h += text->space_y;
+		if (
+			text->text[text_ind] != ' ' ||
+			text->prob == SPACE_SAME_SPACING
+			) h += text->space_y;
 	}	
 }

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Utill/type.h"
-#include "Graphic/graphic.h"
-#include "Actor/actor.h"
-#include "Key/key.h"
-#include "Mouse/mouse.h"
-#include "Sound/sound.h"
-#include "Text/text.h"
+#include "type.h"
+#include "graphic.h"
+#include "actor.h"
+#include "key.h"
+#include "mouse.h"
+#include "sound.h"
+#include "text.h"
 
 typedef struct Termily {
 	bool should_run;

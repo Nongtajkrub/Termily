@@ -14,13 +14,13 @@ extern mouse_t mouse_left;
 extern mouse_t mouse_right;
 
 u32
-getMouseX();
+mouse_getMouseX();
 
 u32
-getMouseY();
+mouse_getMouseY();
 
 bool
-checkMouseDown(mouse_t *mouse);
+mouse_checkMouseDown(mouse_t *mouse);
 
 bool
-checkMousePress(mouse_t *mouse);
+mouse_checkMousePress(mouse_t *mouse);
