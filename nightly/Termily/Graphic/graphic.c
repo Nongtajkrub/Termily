@@ -5,7 +5,6 @@
 #include "../Utill/type.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 u16 graph_err = SUCCESS;
 
@@ -59,36 +58,46 @@ graph_setColor(graph_t *graph, const char* COLOR) {
 	strcpy_s(graph->color, COLOR_SIZE, COLOR);
 }
 
+void
+graph_drawPoint(graph_t *graph, const char DRAW, u32 x, u32 y) {
+	graph->win[y][x] = DRAW;
+}
+
 // Not Done
 static void
-drawLine(graph_t *graph, u32 x1, u32 y1, u32 x2, u32 y2, float slope) {
-	graph->win[y1][x1] = '+';
-	graph->win[y2][x2] = '+';
+drawLine(graph_t *graph, u32 x1, u32 y1, u32 x2, u32 y2, float m, u8 step) {
+	for (u8 i = 0; true; i++) {
+		if (x1 >= x2 && y1 >= y2) break;
+		if (i % step == 0) {
+			x1++;
+			i = 0;
+		}
+		y1++;
+
+		graph->win[y1][x1] = '+';
+	}
 }
 
 void
 graph_drawLine(graph_t *graph, u32 x1, u32 y1, u32 x2, u32 y2) {
-	u32 temp_int;
-	i16 dis_vec_x;
-	i16 dis_vec_y;
-	float slope;
+	float m;
+	u8 step;
 
-	if (x1 < x2) {
-		temp_int = x1;
-		x1 = x2;
-		x2 = temp_int;
+	m = (float)(y2 - y1) / (float)(x2 - x1);
+
+	if (m > 1) {
+		if ((int)m == 2) {
+			step = 2;
+		} else if ((int)m == 3) {
+			step = 3;
+		}
 	}
-	if (y1 < y2) {
-		temp_int = y1;
-		y1 = y2;
-		y2 = y1;
+	if (m <= 1) {
+		step = 1;
 	}
 
-	dis_vec_x = x2 - x1;
-	dis_vec_y = y2 - y1;
-	slope = (float)dis_vec_y / (float)dis_vec_x;
 
-	drawLine(graph, x1, y1, x2, y2, slope);
+	drawLine(graph, x1, y1, x2, y2, m, step);
 }
 
 

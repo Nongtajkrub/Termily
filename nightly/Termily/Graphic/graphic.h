@@ -22,6 +22,12 @@ void
 graph_setColor(graph_t *graph, const char* COLOR); 
 
 void
+graph_drawPoint(graph_t *graph, const char DRAW, u32 x, u32 y);
+
+void
+graph_drawLine(graph_t *graph, u32 x1, u32 y1, u32 x2, u32 y2);
+
+void
 graph_drawGraphic(graph_t *graph);
 
 void
