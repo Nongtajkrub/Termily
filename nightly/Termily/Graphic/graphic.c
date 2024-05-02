@@ -4,7 +4,7 @@
 #include "../Utill/macro.h"
 #include "../Utill/type.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include <windows.h>
 
 u16 graph_err = SUCCESS;
 
@@ -27,7 +27,7 @@ makeScreen(char screen_buff[MAX_H][MAX_W], graph_t *graph) {
 }
 
 void
-graph_makeGraph(graph_t *graph, u32 w, u32 h) {
+graph_makeGraph(graph_t *graph, u16 w, u16 h) {
 	u8 r;
 
 	graph->w = w;
@@ -59,45 +59,76 @@ graph_setColor(graph_t *graph, const char* COLOR) {
 }
 
 void
-graph_drawPoint(graph_t *graph, const char DRAW, u32 x, u32 y) {
-	graph->win[y][x] = DRAW;
-}
-
-// Not Done
-static void
-drawLine(graph_t *graph, u32 x1, u32 y1, u32 x2, u32 y2, float m, u8 step) {
-	for (u8 i = 0; true; i++) {
-		if (x1 >= x2 && y1 >= y2) break;
-		if (i % step == 0) {
-			x1++;
-			i = 0;
-		}
-		y1++;
-
-		graph->win[y1][x1] = '+';
+graph_drawPoint(graph_t *graph, char draw, u16 x, u16 y) {
+	if (!graph->made) {
+		graphNotMade(DRAW_POINT_FUNC);
+		return;
 	}
+
+	if (
+		x >= GET_BOADER_RIGHT(graph->w) ||
+		x == GET_BOADER_LEFT ||
+		y >= GET_BOADER_BOTTOM(graph->h) ||
+		y == GET_BOADER_TOP
+		) {
+		return;
+	}
+	graph->win[y][x] = draw;
 }
 
 void
-graph_drawLine(graph_t *graph, u32 x1, u32 y1, u32 x2, u32 y2) {
-	float m;
-	u8 step;
+graph_drawLine(graph_t *graph, char look, u16 x1, u16 y1, u16 x2, u16 y2) {
+	if (!graph->made) {
+		graphNotMade(DRAW_LINE_FUNC);
+		return;
+	}
 
-	m = (float)(y2 - y1) / (float)(x2 - x1);
+	f32 y,
+		m; 
+	i16	dis_x, dis_y;
+	f32 step;
 
-	if (m > 1) {
-		if ((int)m == 2) {
-			step = 2;
-		} else if ((int)m == 3) {
-			step = 3;
+	dis_x = x2 - x1;
+	dis_y = y2 - y1;
+	m =  (f32)dis_y / (f32)dis_x;
+
+	if (isinf(m)) {
+		if (dis_y > 0) {
+			for (u16 y = y1; y < y2; y++) {
+				graph_drawPoint(graph, look, x1, y);
+			}
+			return;
+		}
+		if (dis_y < 0) {
+			for (u16 y = y1; y > y2; y--) {
+				graph_drawPoint(graph, look, x1, y);
+			}
+			return;
 		}
 	}
-	if (m <= 1) {
-		step = 1;
+
+	if (fabs(m) < STEEP_LINE) {
+		step = LINE_STEP_MAX;
+	} else if (fabs(m) > STEEP_LINE && fabs(m) < GRADUAL_LINE) {
+		step = LINE_STEP_MED;
+	} else {
+		step = LINE_STEP_MIN;
 	}
-
-
-	drawLine(graph, x1, y1, x2, y2, m, step);
+	
+	if (dis_x >= 0) {
+		for (f32 x = x1; x < x2; x += step) {
+			y = (f32)((m * (x - x1)) + y1);
+			graph_drawPoint(graph, look, (u16)round(x), (u16)round(y));
+		}
+		return;
+	}
+	if (dis_x <= 0) {
+		for (f32 x = x1; x > x2; x -= step) {
+			y = (m * ((f32)x - (f32)x1)) + (f32)y1;
+			graph_drawPoint(graph, look, (u16)round(x), (u16)round(y));
+		}
+		return;
+	}
 }
 
 
