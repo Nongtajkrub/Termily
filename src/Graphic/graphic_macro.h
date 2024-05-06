@@ -9,5 +9,13 @@
 // Function name
 #define MAKE_GRAPH_FUNC "MG"
 #define SET_COLOR_FUNC "SC"
+#define DRAW_POINT_FUNC "DP"
+#define DRAW_LINE_FUNC "DL"
 #define DRAW_GRAPH_FUNC "DG"
 
+// Value 
+#define GRADUAL_LINE 2
+#define STEEP_LINE 1
+#define LINE_STEP_MAX 1
+#define LINE_STEP_MED 0.6
+#define LINE_STEP_MIN 0.1

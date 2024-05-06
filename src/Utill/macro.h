@@ -23,3 +23,6 @@
 #define GET_BOADER_BOTTOM(HEIGHT) (HEIGHT - 1)
 #define GET_BOADER_LEFT 1
 #define GET_BOADER_TOP 0
+
+#define GET_REAL_X(X, WIDTH) (WIDTH - X)
+#define GET_REAL_Y(Y, HEIGHT) (HEIGHT - Y)
