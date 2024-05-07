@@ -25,7 +25,7 @@ makeScreen(char screen_buff[MAX_H][MAX_W], graph_t *graph) {
 }
 
 void
-graph_makeGraph(graph_t *graph, u16 w, u16 h) {
+graph_makeGraph(graph_t *graph, u32 w, u32 h) {
 	u8 r;
 
 	graph->w = w;
@@ -39,7 +39,6 @@ graph_makeGraph(graph_t *graph, u16 w, u16 h) {
 		exceedMaxW(MAKE_GRAPH_FUNC);
 		return;
 	}
-	graph->color[0] = '\0';
 	graph->made = true;
 }
 
@@ -55,80 +54,6 @@ graph_setColor(graph_t *graph, const char* COLOR) {
 	}
 	strcpy_s(graph->color, COLOR_SIZE, COLOR);
 }
-
-void
-graph_drawPoint(graph_t *graph, char draw, u16 x, u16 y) {
-	if (!graph->made) {
-		graphNotMade(DRAW_POINT_FUNC);
-		return;
-	}
-
-	if (
-		x >= GET_BOADER_RIGHT(graph->w) ||
-		x == GET_BOADER_LEFT ||
-		y >= GET_BOADER_BOTTOM(graph->h) ||
-		y == GET_BOADER_TOP
-		) {
-		return;
-	}
-	graph->win[y][x] = draw;
-}
-
-void
-graph_drawLine(graph_t *graph, char look, u16 x1, u16 y1, u16 x2, u16 y2) {
-	if (!graph->made) {
-		graphNotMade(DRAW_LINE_FUNC);
-		return;
-	}
-
-	f32 y,
-		m; 
-	i16	dis_x, dis_y;
-	f32 step;
-
-	dis_x = x2 - x1;
-	dis_y = y2 - y1;
-	m =  (f32)dis_y / (f32)dis_x;
-
-	if (isinf(m)) {
-		if (dis_y > 0) {
-			for (u16 y = y1; y < y2; y++) {
-				graph_drawPoint(graph, look, x1, y);
-			}
-			return;
-		}
-		if (dis_y < 0) {
-			for (u16 y = y1; y > y2; y--) {
-				graph_drawPoint(graph, look, x1, y);
-			}
-			return;
-		}
-	}
-
-	if (fabs(m) < STEEP_LINE) {
-		step = LINE_STEP_MAX;
-	} else if (fabs(m) > STEEP_LINE && fabs(m) < GRADUAL_LINE) {
-		step = LINE_STEP_MED;
-	} else {
-		step = LINE_STEP_MIN;
-	}
-	
-	if (dis_x >= 0) {
-		for (f32 x = x1; x < x2; x += step) {
-			y = (f32)((m * (x - x1)) + y1);
-			graph_drawPoint(graph, look, (u16)round(x), (u16)round(y));
-		}
-		return;
-	}
-	if (dis_x <= 0) {
-		for (f32 x = x1; x > x2; x -= step) {
-			y = (m * ((f32)x - (f32)x1)) + (f32)y1;
-			graph_drawPoint(graph, look, (u16)round(x), (u16)round(y));
-		}
-		return;
-	}
-}
-
 
 void
 graph_drawGraphic(graph_t *graph) {

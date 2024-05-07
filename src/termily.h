@@ -7,14 +7,15 @@
 #include "Mouse/mouse.h"
 #include "Sound/sound.h"
 #include "Text/text.h"
-#include "Clock/clock.h"
-#include "termily_type.h"
+
+typedef struct Termily {
+	bool should_run;
+	u32 key_to_exit;
+	int version[3];
+} termily_t;
 
 void
 initTermily(termily_t *termily, u32 key_to_exit);
 
 void
-mainLoop(termily_t *termily);
-
-void
-termilyExit(termily_t *termily);
+termilyExit(termily_t *termily); 
