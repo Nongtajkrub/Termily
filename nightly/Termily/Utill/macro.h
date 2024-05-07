@@ -3,7 +3,7 @@
 // Inint
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 0
-#define VERSION_REVISION 4
+#define VERSION_REVISION 3
 
 #define MAKE_VERSION_ARRAY(ARRAY) do { \
     (ARRAY)[0] = (VERSION_MAJOR); \
@@ -24,5 +24,4 @@
 #define GET_BOADER_LEFT 1
 #define GET_BOADER_TOP 0
 
-#define GET_REAL_X(X, WIDTH) (WIDTH - X)
-#define GET_REAL_Y(Y, HEIGHT) (HEIGHT - Y)
+#define GET_REAL_X(X) (X - 1)

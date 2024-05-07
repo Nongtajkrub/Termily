@@ -16,16 +16,16 @@ typedef struct Graphic {
 } graph_t;
 
 void
-graph_makeGraph(graph_t *graph, u16 w, u16 h); 
+graph_makeGraph(graph_t *graph, u32 w, u32 h);
 
 void
 graph_setColor(graph_t *graph, const char* COLOR); 
 
 void
-graph_drawPoint(graph_t *graph, char draw, u16 x, u16 y); 
+graph_drawPoint(graph_t *graph, const char DRAW, u32 x, u32 y);
 
 void
-graph_drawLine(graph_t *graph, char look, u16 x1, u16 y1, u16 x2, u16 y2); 
+graph_drawLine(graph_t *graph, u32 x1, u32 y1, u32 x2, u32 y2);
 
 void
 graph_drawGraphic(graph_t *graph);
