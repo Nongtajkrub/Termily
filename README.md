@@ -1,3 +1,5 @@
+🔴 **No longer work on!** 🔴
+
 # Termily
 
 **This project is currently still in the testing phase. Right now, it is just a showcase of what Termily can do. I do not recommend using it in a real project.**
